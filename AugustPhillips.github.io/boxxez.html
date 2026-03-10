@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boxes</title>
+    <style>
+        body {
+            background-color: rgb(82, 82, 82);
+        }
+        div {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid black;
+        }
+        #siteContent {
+            background-color: aqua;
+            width: 80%;
+            margin: auto;
+            border: 5px solid black;
+        }
+
+        #header {
+            font-size: 1.5em;
+            font-family: monospace;
+            background-color: cornflowerblue;
+        }
+
+        #navBar {
+            background-color: cornflowerblue;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .navLink {
+            background-color: whitesmoke;
+        }
+
+        .article {
+            background-color: cornflowerblue;
+            margin-bottom: 10px;
+        }
+
+        .articleHeader {
+            background-color: rgb(175, 62, 175);
+            font-family: monospace;
+        }
+
+        .articleContent {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="siteContent" style="
+    border-top: 2px;
+        border-bottom: 10px;
+        border-left: 2px;
+        border-right: 10px;
+        border-color: black;
+        ">
+        <div id="header" style="
+    padding-left: 10px;
+    margin-top: 5px;
+">
+            box in box
+        </div>
+        <div id="navBar" style="
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-top: 5px;
+">
+            <div class="navLink">link</div>
+            <div class="navLink">link</div>
+            <div class="navLink">link</div>
+        </div>
+                    <div class="article">
+                <div class="articleHeader">
+                    <h2>Article</h2>
+                </div>
+                <div class="articleContent">
+                    <p>some text</p>
+                </div>
+            </div>
+            <div class="article">
+                <div class="articleHeader">
+                    <h2>Article</h2>
+                </div>
+                <div class="articleContent">
+                    <p>some text</p>
+                </div>
+            </div>
+
+    </div>
+
+
+</body>
+
+</html>
