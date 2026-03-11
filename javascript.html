@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>java</title>
+    <title>COOKIE CLICKER</title>
     <style>
+
+        body {
+            background-color: rgb(224, 204, 177);
+        }
 
         .linkbar {
             background-color: rgb(110, 110, 224);
@@ -16,7 +20,22 @@
             flex-wrap: wrap;
             display: flex;
         }
+        .cookie {
+            padding: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            float: left;
+        }
+
+        .cookie img:hover {
+            transform: scale(1.25);
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
     </style>
+    
 </head>
 
 <body>
@@ -35,10 +54,13 @@
                 <button type="button"><a href="https://github.com/AugustPhillips/AugustPhillips.github.io">GithubRepo</a></button>
             </div>
         </div>
-        <img src="Images\cookie.jpg" alt="cookie" width="200px" onclick="addScore()">
-        <div id="scorebox">0</div>
-        <button onclick="buyMult()">upgrade<div id="upgradecost">10</div></button>
-        <button onclick="buyautoclick()">buy auto click<div id="autoclickcost">15</div></button>
+        <div class="cookie">
+        <img src="Images\cookie.png" alt="cookie" width="200px" onclick="addScore()">
+        </div>
+        <p><h2>cookies</h2> <h3><em><div id="scorebox">0</div></em></h3></p>
+        <button onclick="buyMult()">upgrade:<div id="upgradecost">10</div></button>
+        <button onclick="buyautoclick()">buy auto click:<div id="autoclickcost">15</div></button>
+        <button onclick="rebirth()">rebirth:<div id="rebirthcost">150</div></button>
     </div>
 </body>
 
@@ -57,16 +79,19 @@
     var autoclickamount = 0;
     var upgradecost = document.getElementById("upgradecost")
     var autoclickcost = document.getElementById("autoclickcost")
+    var rebithmult = 1
+    var rebirthcost = document.getElementById("rebirthcost")
 
     function addScore() {
-        score = score + multiplier;
+        score = score + (multiplier * rebithmult);
         scorebox.innerHTML = score;
+        
     }
 
     function buyMult() {
         if (score >= (multiplier * 10)) {
             score = score - (multiplier * 10)
-            multiplier = multiplier + 0.2;
+            multiplier = multiplier + 0.25;
             scorebox.innerHTML = score;
             upgradecost.innerHTML = (multiplier * 10)
         }
@@ -81,7 +106,7 @@
                 scorebox.innerHTML = score;
                 setInterval(
                     () => {
-                        score = score + autoclickamount;
+                        score = score + (autoclickamount * rebithmult);
                         scorebox.innerHTML = score;
                     },
                     1000
@@ -92,6 +117,19 @@
                 scorebox.innerHTML = score;
                 autoclickcost.innerHTML = (autoclickamount * 15 + 15)
             }
+        }
+    }
+
+    function rebirth() {
+        if (score >= (rebithmult * 150)) {
+            score = 0
+            multiplier = 1
+            autoclickamount = 0
+            rebithmult = (rebithmult + 0.4)
+            rebirthcost.innerHTML = (rebithmult * 150)
+            scorebox.innerHTML = score;
+            autoclickcost.innerHTML = (autoclickamount * 15 + 15)
+            upgradecost.innerHTML = (multiplier * 10)
         }
     }
 
